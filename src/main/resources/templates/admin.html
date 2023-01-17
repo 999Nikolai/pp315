@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <title>Spring Security Example</title>
+    <title>Spring Security</title>
 </head>
+
 <body>
-<h1>Welcome to Index PAG!</h1>
-<br><br/>
-<form th:action="@{/login}">
-    <input type="submit" value="Login"/>
-</form>
+<h1> Admin </h1>
+<h3> Перейти к списку страниц <a th:href="@{/admin/list}">пользователей</a></h3>
 <br><br/>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout"/>
 </form>
-
 </body>
+
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновление пользователя</title>
+</head>
+
+<body>
+<form
+        th:method="PATCH" th:action="@{/admin/{id}(id=${users.getId()})}" th:object="${users}">
+    <label for="name">Enter name: </label>
+    <br/>
+    <input type="text" th:field="*{username}" id="name"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name error</div>
+    <br/>
+    <label for="password">Enter password: </label>
+    <br/>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+    <br/>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
+    <br/>
+    <label for="roles">Enter № roles (1-user; 2-admin): </label>
+    <br/>
+    <input type="text" th:field="*{roles}" id="roles"/>
+    <div style="color: darkred" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}">Name error</div>
+    <br/>
+    <input type="submit" value="Update!"/>
+
+</form>
+<br><br/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+</html>

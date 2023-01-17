@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:security="http://www.springframework.org/security/tags"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.springframework.org/security/tags ">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>пользователь</title>
+</head>
+
+<body>
+
+
+<p th:text="${users.getId()}">VALUE</p>
+<p th:text="${users.getUsername()}">VALUE</p>
+<p th:text="${users.getPassword()}">VALUE</p>
+<p th:text="${users.getEmail()}">VALUE</p>
+<p th:text="${users.getRoles()}">VALUE</p>
+<hr/>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <!--<security:authorize access="hasRole('ADMIN')">-->
+    <form th:action="@{{id}/edit(id=${users.getId()})}">
+        <input type="submit" value="Edit"/>
+    </form>
+    <!--</security:authorize>-->
+
+    <br><br/>
+    <form th:method="DELETE" th:action="@{{id}(id=${users.getId()})}">
+        <input type="submit" value="Delete"/>
+    </form>
+</div>
+<br><br/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+</html>

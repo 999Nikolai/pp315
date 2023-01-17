@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        пользователи
+    </title>
+</head>
+
+<body>
+<h1><strong>
+    <BLOCKQUOTE>
+        <font color="FF0000">Пользователи:</font>
+    </BLOCKQUOTE>
+</strong></h1>
+<div th:each="mac : ${messages}">
+    <a th:href="@{{id}(id = ${mac.getId()})}"
+       th:text="${mac.getUsername() + ',  ' + mac.getEmail()}">pepl
+    </a>
+</div>
+<br><br/>
+<hr/>
+<a href="newUser">Создание нового пользователя</a>
+<br><br/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+
+</html>
