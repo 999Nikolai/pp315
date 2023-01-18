@@ -16,11 +16,11 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class AdminController {
     private final UserService userService;
-
     @Autowired
     public AdminController(UserService userService) {
         this.userService = userService;
     }
+
 
     @GetMapping("/list")
     public String printUserList(Model model) {

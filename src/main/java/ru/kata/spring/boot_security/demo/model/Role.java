@@ -10,10 +10,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
-    @Override
-    public String toString() {
-        return name + "-" + id;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +23,9 @@ public class Role implements GrantedAuthority {
         return name;
     }
 
-//    public String getNameWithoutPrefix() {
-//        return this.name.replace("ROLE_", "");
-//    }
+    @Override
+    public String toString() {
+        return name + "-" + id;
+    }
+
 }

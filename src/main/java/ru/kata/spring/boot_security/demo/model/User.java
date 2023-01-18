@@ -2,7 +2,6 @@ package ru.kata.spring.boot_security.demo.model;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,7 +12,6 @@ import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Data
-//@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -43,16 +41,6 @@ public class User implements UserDetails {
     public User() {
     }
 
-//    public User(String username, String email) {
-//        this.username = username;
-//        this.email = email;
-//    }
-//
-//    public User(String username, String password, String email) {
-//        this.username = username;
-//        this.password = password;
-//        this.email = email;
-//    }
 
     public User(String username, String password, String email, Collection<Role> roles) {
         this.username = username;
