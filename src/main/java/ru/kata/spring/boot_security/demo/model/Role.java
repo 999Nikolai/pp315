@@ -15,7 +15,7 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Override
@@ -26,6 +26,10 @@ public class Role implements GrantedAuthority {
     @Override
     public String toString() {
         return name + "-" + id;
+    }
+
+    public String getNameWithoutPrefix() {
+        return this.name.replace("ROLE_", "");
     }
 
 }

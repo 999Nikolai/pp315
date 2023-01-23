@@ -34,9 +34,14 @@ public class UserServiceImp implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(int id, User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.update(user);
+    public void updateUser(String username, User newUserData) {
+        User user = userDao.findByUsername(username);
+        user.setPassword(passwordEncoder.encode(newUserData.getPassword()));
+        user.setAge(newUserData.getAge());
+        user.setLastname(newUserData.getLastname());
+        user.setEmail(newUserData.getEmail());
+        user.setRoles(newUserData.getRoles());
+        userDao.save(user);
     }
 
     @Override
@@ -60,6 +65,10 @@ public class UserServiceImp implements UserService {
         return userDao.getUser();
     }
 
+    @Override
+    public User findByEmail(String email) {
+        return userDao.findByEmail(email);
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

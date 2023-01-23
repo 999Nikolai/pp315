@@ -11,14 +11,14 @@ public interface UserService extends UserDetailsService {
 
     void saveUser(User user);
 
-    void updateUser(int id, User user);
+    void updateUser(String username, User newUserData);
 
     void removeUserById(long id);
 
     User show(long id);
 
     List<User> getUser();
-
+    User findByEmail(String name);
     User findByUsername(String username);
 
     @Override

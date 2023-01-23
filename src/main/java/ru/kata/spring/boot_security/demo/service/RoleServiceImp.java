@@ -30,4 +30,5 @@ public class RoleServiceImp implements RoleService{
     public Role convert(String id) {
         return roleDao.convert(id);
     }
+
 }

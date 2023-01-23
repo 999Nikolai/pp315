@@ -12,6 +12,6 @@ public interface UserDao {
     void update(User updatedUser);
     void delete(Long id);
 
-//    User findByEmail(String email);
+    User findByEmail(String email);
     User findByUsername(String username);
 }

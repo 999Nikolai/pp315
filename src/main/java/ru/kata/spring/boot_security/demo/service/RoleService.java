@@ -10,4 +10,6 @@ public interface RoleService {
     List<Role> findAllRoles();
 
     Role convert(String id);
+
+
 }

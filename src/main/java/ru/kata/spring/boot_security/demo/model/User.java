@@ -19,13 +19,22 @@ public class User implements UserDetails {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "username")
+
+
+    @Column(name = "firstname")
     @NotEmpty(message = "Напишите имя")
     @Size(min = 2, max = 30, message = "Имя короткое или длинное")
     private String username;
 
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "age")
+    private Long age;
+
     @Column(name = "password")
     private String password;
+
 
     @Column(name = "email")
     @NotEmpty(message = "Напишите email")
@@ -41,9 +50,10 @@ public class User implements UserDetails {
     public User() {
     }
 
-
-    public User(String username, String password, String email, Collection<Role> roles) {
+    public User(String username, String lastname, Long age, String password, String email, Collection<Role> roles) {
         this.username = username;
+        this.lastname = lastname;
+        this.age = age;
         this.password = password;
         this.email = email;
         this.roles = roles;
@@ -83,4 +93,15 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+    public String listOfRoles() {
+
+        StringBuilder listOfRoles = new StringBuilder();
+        for (Role role: roles) {
+            listOfRoles.append(role.getName() + " ");
+        }
+        return String.valueOf(listOfRoles);
+    }
+
 }
