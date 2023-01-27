@@ -5,9 +5,10 @@ import ru.kata.spring.boot_security.demo.model.Role;
 import java.util.List;
 
 public interface RoleDao {
-    Role convert(String id);
 
-    List<Role> findAllRoles();
+    boolean add(Role role);
 
-    Role getRoleById(long id);
+    Role findByName(String name);
+
+    List<Role> listByName(List<String> name);
 }
